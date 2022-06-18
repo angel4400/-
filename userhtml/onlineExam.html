@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>考试页面</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
+      * {
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
 
-        /* Create three equal columns that floats next to each other */
-        /*  HTML+css实现div盒子根据内容自动增大
+      /* Create three equal columns that floats next to each other */
+      /*  HTML+css实现div盒子根据内容自动增大
         1.先把需要根据内容增大的盒子加上：
         height：auto；
         2.如果需要设置最小高度，则加上：
@@ -24,36 +23,36 @@
         3.如果子盒子有浮动属性则加上一个盒子去除浮动：
         4.如果以上步骤还是不行，一定一定要检查大盒子里的盒子是不是给了固定的高度！
       */
-        /* 设置左边的盒子 */
-        .column {
-            float: left;
-            width: 30%;
-            padding: 10px;
-            min-height: 500px;
-            height: auto;
-            margin: 10px;
+      /* 设置左边的盒子 */
+      .column {
+        float: left;
+        width: 30%;
+        padding: 10px;
+        min-height: 500px;
+        height: auto;
+        margin: 10px;
 
-            border-radius: 0px;
-            background: #ffffff;
-            box-shadow: 5px 5px 12px #8c8c8c, -5px -5px 12px #ffffff;
-        }
+        border-radius: 0px;
+        background: #ffffff;
+        box-shadow: 5px 5px 12px #8c8c8c, -5px -5px 12px #ffffff;
+      }
 
-        /* 设置右边的盒子 */
-        .column_left {
-            float: left;
-            width: 60%;
-            padding: 20px;
-            min-height: 500px;
-            height: auto;
-            margin: 10px;
+      /* 设置右边的盒子 */
+      .column_left {
+        float: left;
+        width: 60%;
+        padding: 20px;
+        min-height: 500px;
+        height: auto;
+        margin: 10px;
 
-            border-radius: 0px;
-            background: #ffffff;
-            box-shadow: 5px 5px 12px #8c8c8c, -5px -5px 12px #ffffff;
-        }
+        border-radius: 0px;
+        background: #ffffff;
+        box-shadow: 5px 5px 12px #8c8c8c, -5px -5px 12px #ffffff;
+      }
 
-        /* 对齐方式 */
-        /*
+      /* 对齐方式 */
+      /*
         justify-content: center;  居中排列
         justify-content: start; 从行首开始排列
         justify-content: end; 从行尾开始排列
@@ -62,233 +61,231 @@
         justify-content:left; 一个挨一个在对齐容器得左边缘
         justify-content:right; 元素以容器右边缘为基准，一个挨着一个对齐，
          */
-        /* 基线对齐 */
-        /*
+      /* 基线对齐 */
+      /*
         justify-content： 基线;
         对齐内容：第一个基线;
         对齐内容：最后一个基线;
         */
-        /* 分配弹性元素方式 */
-        /*
+      /* 分配弹性元素方式 */
+      /*
         justify-content： space-between;  均匀排列每个元素首个元素放置于起点，末尾元素放置于终点
         justify-content： space-around;  均匀排列每个元素 每个元素周围分配相同的空间
         justify-content： space-evenly; 均匀排列每个元素每个元素之间的间隔相等
         justify-content： stretch;  均匀排列每个元素
         'auto'-size 的元素会被拉伸以适应容器的大小
         */
-        /* 溢出对齐方式 */
-        /*
+      /* 溢出对齐方式 */
+      /*
         justify-content： safe center;合理性内容：不安全的中心;
         */
 
-        /* 全局值 */
-        /*
+      /* 全局值 */
+      /*
         justify-content： inherit;
         对齐内容：初始;
         对齐内容：未设置;
         */
-        .row {
-            /* 设置盒子居中 */
-            display: flex;
-            justify-content: center;
+      .row {
+        /* 设置盒子居中 */
+        display: flex;
+        justify-content: center;
+      }
+
+      /* 清除浮动后的列 */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      /* 响应式布局——使三列堆叠在一起，而不是彼此相邻 */
+      @media (max-width: 600px) {
+        .column {
+          width: 100%;
         }
 
-        /* 清除浮动后的列 */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
+        .column_left {
+          width: 100%;
         }
 
-        /* 响应式布局——使三列堆叠在一起，而不是彼此相邻 */
-        @media (max-width: 600px) {
-            .column {
-                width: 100%;
-            }
-
-            .column_left {
-                width: 100%;
-            }
-
-            .column_top {
-                width: 100%;
-            }
+        .column_top {
+          width: 100%;
         }
+      }
 
-        /* 设置单选框样式 */
-        /* 自定义标签（容器） */
-        .container {
-            display: block;
-            position: relative;
-            padding-left: 35px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            font-size: 22px;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
+      /* 设置单选框样式 */
+      /* 自定义标签（容器） */
+      .container {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
 
-        /* 隐藏浏览器的默认单选按钮 */
-        .container input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-            height: 0;
-            width: 0;
-        }
+      /* 隐藏浏览器的默认单选按钮 */
+      .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
 
-        /* 创建一个自定义单选按钮 */
-        .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 25px;
-            width: 25px;
-            background-color: #eee;
-            border-radius: 50%;
-        }
+      /* 创建一个自定义单选按钮 */
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+      }
 
-        /* 鼠标悬停时，添加灰色背景颜色 */
-        .container:hover input~.checkmark {
-            background-color: #ccc;
-        }
+      /* 鼠标悬停时，添加灰色背景颜色 */
+      .container:hover input ~ .checkmark {
+        background-color: #ccc;
+      }
 
-        /* 选中单选按钮时，添加蓝色背景 */
-        .container input:checked~.checkmark {
-            background-color: #2196f3;
-        }
+      /* 选中单选按钮时，添加蓝色背景 */
+      .container input:checked ~ .checkmark {
+        background-color: #2196f3;
+      }
 
-        /* 创建指标（点/圆 - 未选中时隐藏）*/
-        .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-        }
+      /* 创建指标（点/圆 - 未选中时隐藏）*/
+      .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
 
-        /* 选中时显示指示器（点/圆圈）*/
-        .container input:checked~.checkmark:after {
-            display: block;
-        }
+      /* 选中时显示指示器（点/圆圈）*/
+      .container input:checked ~ .checkmark:after {
+        display: block;
+      }
 
-        /* 设置指示器样式（点/圆）*/
-        .container .checkmark:after {
-            top: 9px;
-            left: 9px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: white;
-        }
+      /* 设置指示器样式（点/圆）*/
+      .container .checkmark:after {
+        top: 9px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+      }
 
-        /* 设置按钮样式 */
-        .btn {
-            border: 2px solid black;
-            background-color: white;
-            color: black;
-            padding: 14px 28px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+      /* 设置按钮样式 */
+      .btn {
+        border: 2px solid black;
+        background-color: white;
+        color: black;
+        padding: 14px 28px;
+        font-size: 16px;
+        cursor: pointer;
+      }
 
-        /* Blue按钮 */
-        .info {
-            border-color: #2196f3;
-            color: dodgerblue;
-        }
+      /* Blue按钮 */
+      .info {
+        border-color: #2196f3;
+        color: dodgerblue;
+      }
 
-        .info:hover {
-            background: #2196f3;
-            color: white;
-        }
+      .info:hover {
+        background: #2196f3;
+        color: white;
+      }
 
-        /* 定义粗体字符 */
-        #title {
-            font-size: 20px;
-            font-weight: bold;
-            color: #2196f3;
-        }
+      /* 定义粗体字符 */
+      #title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #2196f3;
+      }
 
-        /* 考试倒计时 */
-        #timer {
-            font-size: 30px;
-            font-weight: bold;
-            color: #000000;
-            margin: 0 auto;
-        }
+      /* 考试倒计时 */
+      #timer {
+        font-size: 30px;
+        font-weight: bold;
+        color: #000000;
+        margin: 0 auto;
+      }
 
-        /* 考试助手 */
-        .Examination_assistant {
-            font-weight: bold;
-            /* 边框 */
-            width: 100%;
-            height: 60px;
-            line-height: 60px;
-            /*设置line-height与父级元素的height相等*/
-            /* text-align: center; 设置文本水平居中 */
-            overflow: hidden;
-            /*防止内容超出容器或者产生自动换行*/
-            /* 设置下边框 */
-            border-bottom: 1px solid #ccc;
-            font-size: 30px;
-        }
+      /* 考试助手 */
+      .Examination_assistant {
+        font-weight: bold;
+        /* 边框 */
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+        /*设置line-height与父级元素的height相等*/
+        /* text-align: center; 设置文本水平居中 */
+        overflow: hidden;
+        /*防止内容超出容器或者产生自动换行*/
+        /* 设置下边框 */
+        border-bottom: 1px solid #ccc;
+        font-size: 30px;
+      }
 
-        .times {
-            text-align: center;
-            /* 设置文本水平居中 */
-        }
-
+      .times {
+        text-align: center;
+        /* 设置文本水平居中 */
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="row">
-        <div class="column_left">
-            <p id="title"></p>
+      <div class="column_left">
+        <p id="title"></p>
 
-            <label class="container">
-                <input type="radio" name="option" value="A" />
-                A.<span id="optionA"></span><span class="checkmark"></span>
-            </label>
-            <label class="container">
-                <input type="radio" name="option" value="B" />
-                B.<span id="optionB"></span><span class="checkmark"></span>
-            </label>
-            <label class="container">
-                <input type="radio" name="option" value="C" />
-                C.<span id="optionC"></span><span class="checkmark"></span>
-            </label>
-            <label class="container">
-                <input type="radio" name="option" value="D" />
-                D.<span id="optionD"></span><span class="checkmark"></span>
-            </label>
+        <label class="container">
+          <input type="radio" name="option" value="A" />
+          A.<span id="optionA"></span><span class="checkmark"></span>
+        </label>
+        <label class="container">
+          <input type="radio" name="option" value="B" />
+          B.<span id="optionB"></span><span class="checkmark"></span>
+        </label>
+        <label class="container">
+          <input type="radio" name="option" value="C" />
+          C.<span id="optionC"></span><span class="checkmark"></span>
+        </label>
+        <label class="container">
+          <input type="radio" name="option" value="D" />
+          D.<span id="optionD"></span><span class="checkmark"></span>
+        </label>
 
-            <button class="btn info" id="btnPrev">上一题</button>
-            <button class="btn info" id="btnNext">下一题</button>
-            <button class="btn info" id="submits">交卷</button>
+        <button class="btn info" id="btnPrev">上一题</button>
+        <button class="btn info" id="btnNext">下一题</button>
+        <button class="btn info" id="submits">交卷</button>
+      </div>
+
+      <!-- 考试助手 -->
+      <div class="column">
+        <div>
+          <div class="Examination_assistant">考试助手</div>
+          <!-- 考试倒计时 -->
+          <span>剩余时间：</span>
+          <div class="times">
+            <img src="../images/clock.png" />
+            <span id="timer"></span>
+          </div>
+          <!-- 当前时间 -->
+          <span id="currentTime"></span>
         </div>
 
-        <!-- 考试助手 -->
-        <div class="column">
-            <div>
-                <div class="Examination_assistant">考试助手</div>
-                <!-- 考试倒计时 -->
-                <span>剩余时间：</span>
-                <div class="times">
-                    <img src="../images/clock.png">
-                    <span id="timer"></span>
-                </div>
-                <!-- 当前时间 -->
-                <span id="currentTime"></span>
-            </div>
-
-<ul id='qq'></ul>
-
-        </div>
-</body>
-<script>
-
+        <ul id="qq"></ul>
+      </div>
+    </div>
+  </body>
+  <script>
     var proArr = []; //题目
     var submitAnswer = []; //用户提交的答案
     index = 0; //当前题目索引下标
@@ -296,215 +293,234 @@
     //读取游览器的题目，转换为对象，返回题库数组
     //随机生成题目
     function getProData() {
-        let pro = []; //题目
-        // let proData = localStorage.getItem("problemDB"); //读取题库
-        // 读取本地存储里面的数据
-        let arr1 = JSON.parse(localStorage.getItem('problemDB'))
-        // 如果没有数据
-        if (!arr1) {
-            let arr1 = [
-                { stuId: 1, title: '列', a: 19, b: 11, c: 1, d: 1, answer: 52, score: 20 },
-            ]
-        }
-        return arr1
-        let proStr = proData.split("*"); //拆分成数组
-        for (let item of proStr) {
-            proArr.push(JSON.parse(item)); //转换为对象
-        }
-        for (let i = 0; i < 5; i++) {
-            let index = Math.floor(Math.random() * proArr.length); //随机生成题目索引
-            // 去重复值
-            // if (pro.indexOf(proArr[index]) == -1) {
-            //     pro.push(proArr[index]);
-            // } else {
-            //     i--;
-            // }
+      let pro = []; //题目
+      // let proData = localStorage.getItem("problemDB"); //读取题库
+      // 读取本地存储里面的数据
+      let arr1 = JSON.parse(localStorage.getItem("problemDB"));
+      // 如果没有数据
+      if (!arr1) {
+        let arr1 = [
+          {
+            stuId: 1,
+            title: "列",
+            a: 19,
+            b: 11,
+            c: 1,
+            d: 1,
+            answer: 52,
+            score: 20,
+          },
+        ];
+      }
+      return arr1;
+      let proStr = proData.split("*"); //拆分成数组
+      for (let item of proStr) {
+        proArr.push(JSON.parse(item)); //转换为对象
+      }
+      for (let i = 0; i < 5; i++) {
+        let index = Math.floor(Math.random() * proArr.length); //随机生成题目索引
+        // 去重复值
+        // if (pro.indexOf(proArr[index]) == -1) {
+        //     pro.push(proArr[index]);
+        // } else {
+        //     i--;
+        // }
 
-            while (pro.indexOf(proArr[index]) != -1) { //如果题目已经存在，则重新随机生成
-                index = Math.floor(Math.random() * proArr.length); //随机生成题目索引
-            }
-
-            pro.push(proArr[index]); //添加到题目数组
-
-            proArr.splice(index, 1); //从题库数组中删除
+        while (pro.indexOf(proArr[index]) != -1) {
+          //如果题目已经存在，则重新随机生成
+          index = Math.floor(Math.random() * proArr.length); //随机生成题目索引
         }
-        return pro; //返回题库数组
+
+        pro.push(proArr[index]); //添加到题目数组
+
+        proArr.splice(index, 1); //从题库数组中删除
+      }
+      return pro; //返回题库数组
     }
 
     //显示题目
     function showProblem(index) {
-        document.getElementById("title").innerHTML =
-            "第" + (index+1) + "题" + "：&nbsp;&nbsp;" + proArr[index].title;
-            // "第" + (index + 1) + "题" + "：&nbsp;&nbsp;" + proArr[index].title;
-        document.getElementById("optionA").innerHTML = proArr[index].a;
-        document.getElementById("optionB").innerHTML = proArr[index].b;
-        document.getElementById("optionC").innerHTML = proArr[index].c;
-        document.getElementById("optionD").innerHTML = proArr[index].d;
-        // 将四个单选按钮复原
-        let options = document.getElementsByName("option"); //获取所有单选按钮
-        for (let x of options) {  //遍历所有单选按钮
-            x.checked = false; //复原
+      document.getElementById("title").innerHTML =
+        "第" + (index + 1) + "题" + "：&nbsp;&nbsp;" + proArr[index].title;
+      // "第" + (index + 1) + "题" + "：&nbsp;&nbsp;" + proArr[index].title;
+      document.getElementById("optionA").innerHTML = proArr[index].a;
+      document.getElementById("optionB").innerHTML = proArr[index].b;
+      document.getElementById("optionC").innerHTML = proArr[index].c;
+      document.getElementById("optionD").innerHTML = proArr[index].d;
+      // 将四个单选按钮复原
+      let options = document.getElementsByName("option"); //获取所有单选按钮
+      for (let x of options) {
+        //遍历所有单选按钮
+        x.checked = false; //复原
+      }
+      // 显示已经提交的答案
+      if (submitAnswer[index] != undefined) {
+        //如果已经提交过答案
+        for (let x of options) {
+          //遍历所有单选按钮
+          if (x.value == submitAnswer[index]) {
+            //如果答案和单选按钮的value相等
+            x.checked = true; //选中
+          }
         }
-        // 显示已经提交的答案
-        if (submitAnswer[index] != undefined) { //如果已经提交过答案
-            for (let x of options) { //遍历所有单选按钮
-                if (x.value == submitAnswer[index]) { //如果答案和单选按钮的value相等
-                    x.checked = true; //选中
-                }
-            }
-        }
+      }
     }
 
     //保存当前题目答案
     let options = document.getElementsByName("option"); //获取所有单选按钮
-    for (let x of options) { //遍历所有单选按钮
-        x.onclick = function () { //给每个单选按钮绑定点击事件
-            if (x.checked) { //如果选中
-                submitAnswer[index] = x.value; //保存答案
-                // console.log(submitAnswer);
-
-            }
+    for (let x of options) {
+      //遍历所有单选按钮
+      x.onclick = function () {
+        //给每个单选按钮绑定点击事件
+        if (x.checked) {
+          //如果选中
+          submitAnswer[index] = x.value; //保存答案
+          // console.log(submitAnswer);
         }
+      };
     }
 
     proArr = getProData();
     showProblem(0);
 
     document.getElementById("btnNext").onclick = function () {
-        // 保存当前题目答案
-        // submitProblem();
-        // console.log(submitAnswer);
-        // 判断是否是最后一题
-        if (index < proArr.length - 1) { //如果不是最后一题
-            index++; //下一题
-            showProblem(index); //显示下一题
-        } else {
-            index = proArr.length - 1;
-            alert("已经是最后一题了");
-        }
+      // 保存当前题目答案
+      // submitProblem();
+      // console.log(submitAnswer);
+      // 判断是否是最后一题
+      if (index < proArr.length - 1) {
+        //如果不是最后一题
+        index++; //下一题
+        showProblem(index); //显示下一题
+      } else {
+        index = proArr.length - 1;
+        alert("已经是最后一题了");
+      }
     };
 
     document.getElementById("btnPrev").onclick = function () {
-        //  // 保存当前题目答案
-        // submitProblem();
-        // console.log(submitAnswer);
-        // 判断是否是第一题
-        if (index > 0) {
-            index--;
-            showProblem(index);
-        } else {
-            alert("已经是第一题了");
-        }
+      //  // 保存当前题目答案
+      // submitProblem();
+      // console.log(submitAnswer);
+      // 判断是否是第一题
+      if (index > 0) {
+        index--;
+        showProblem(index);
+      } else {
+        alert("已经是第一题了");
+      }
     };
 
     //考试倒计时，防止页面刷新
     var maxtime; //考试时间
-    if (window.name == '') { //如果没有设置考试时间，则默认为60分钟
-        maxtime = 60 * 60; //默认为60分钟
-    } else { //如果设置了考试时间，则使用设置的时间
-        maxtime = window.name; //获取考试时间
+    if (window.name == "") {
+      //如果没有设置考试时间，则默认为60分钟
+      maxtime = 60 * 60; //默认为60分钟
+    } else {
+      //如果设置了考试时间，则使用设置的时间
+      maxtime = window.name; //获取考试时间
     }
-    function CountDown() { //倒计时函数
-        if (maxtime >= 0) { //如果考试时间大于0
-            minutes = Math.floor(maxtime / 60); //获取分钟
-            seconds = Math.floor(maxtime % 60); //获取秒数
-            msg = minutes + ":" + seconds; //拼接字符串
-            document.getElementById("timer").innerHTML = msg; //显示倒计时
-            if (maxtime == 5 * 60) alert('注意，还有5分钟!'); //如果剩余时间为5分钟，则提醒
-            --maxtime; //减一秒
-            window.name = maxtime; //保存考试时间
-        }
-        else {
-            clearInterval(timer); //停止计时器
-            alert("考试时间到，结束!"); //提示考试结束
-            window.location.href = "./index.html"; //跳转到首页
-        }
+    function CountDown() {
+      //倒计时函数
+      if (maxtime >= 0) {
+        //如果考试时间大于0
+        minutes = Math.floor(maxtime / 60); //获取分钟
+        seconds = Math.floor(maxtime % 60); //获取秒数
+        msg = minutes + ":" + seconds; //拼接字符串
+        document.getElementById("timer").innerHTML = msg; //显示倒计时
+        if (maxtime == 5 * 60) alert("注意，还有5分钟!"); //如果剩余时间为5分钟，则提醒
+        --maxtime; //减一秒
+        window.name = maxtime; //保存考试时间
+      } else {
+        clearInterval(timer); //停止计时器
+        alert("考试时间到，结束!"); //提示考试结束
+        window.location.href = "./index.html"; //跳转到首页
+      }
     }
     timer = setInterval("CountDown()", 1000); //设置定时器
 
     // 获取当前时间
     function getCurrentTime() {
-        let date = new Date();  //获取当前时间
-        let year = date.getFullYear();  //获取年
-        let month = date.getMonth() + 1; //获取月
-        let day = date.getDate(); //获取日
-        let hour = date.getHours(); //获取时
-        let minute = date.getMinutes(); //获取分
-        // let second = date.getSeconds();
-        let currentTime =
-            year +
-            "-" +
-            month +
-            "-" +
-            day +
-            " " +
-            hour +
-            ":" +
-            minute
-            // + ":" +
-            // second;
-        document.getElementById("currentTime").innerHTML = currentTime; //显示当前时间
-        console.log(currentTime); //打印当前时间
+      let date = new Date(); //获取当前时间
+      let year = date.getFullYear(); //获取年
+      let month = date.getMonth() + 1; //获取月
+      let day = date.getDate(); //获取日
+      let hour = date.getHours(); //获取时
+      let minute = date.getMinutes(); //获取分
+      // let second = date.getSeconds();
+      let currentTime =
+        year + "-" + month + "-" + day + " " + hour + ":" + minute;
+      // + ":" +
+      // second;
+      document.getElementById("currentTime").innerHTML = currentTime; //显示当前时间
+      console.log(currentTime); //打印当前时间
     }
     getCurrentTime();
 
-    document.getElementById('submits').onclick = function scores() { //点击提交按钮
+    document.getElementById("submits").onclick = function scores() {
+      //点击提交按钮
 
-        // 求proArr[1].score的和
-        let sum = 0; //初始化题目分数和
-        for (let i = 0; i < proArr.length; i++) { //遍历题目数组
-            sum += +proArr[i].score; //求和
+      // 求proArr[1].score的和
+      let sum = 0; //初始化题目分数和
+      for (let i = 0; i < proArr.length; i++) {
+        //遍历题目数组
+        sum += +proArr[i].score; //求和
+      }
+      console.log(sum);
+
+      let sum1 = 0; //初始化题目分数和
+      for (let i = 0; i < proArr.length; i++) {
+        //遍历题目数组
+        if (proArr[i].answer == submitAnswer[i]) {
+          //判断答案是否正确
+          sum1 += +proArr[i].score; //求考试总分和
         }
-        console.log(sum);
+      }
 
-        let sum1 = 0; //初始化题目分数和
-        for (let i = 0; i < proArr.length; i++) { //遍历题目数组
-            if (proArr[i].answer == submitAnswer[i]) { //判断答案是否正确
-                sum1 += +(proArr[i].score); //求考试总分和
-            }
+      // 正确个数
+      let correctNum = 0; //初始化正确个数
+      for (let i = 0; i < proArr.length; i++) {
+        //遍历题目数组
+        if (proArr[i].answer == submitAnswer[i]) {
+          //判断答案是否正确
+          correctNum++; //正确个数加1
         }
+      }
 
-        // 正确个数
-        let correctNum = 0; //初始化正确个数
-        for (let i = 0; i < proArr.length; i++) { //遍历题目数组
-            if (proArr[i].answer == submitAnswer[i]) { //判断答案是否正确
-                correctNum++; //正确个数加1
-            }
-        }
+      // 错误个数
+      let errorNum = proArr.length - correctNum;
 
-        // 错误个数
-        let errorNum = proArr.length - correctNum;
+      //正确率
+      let correctRate = ((sum1 / sum) * 100).toFixed(0);
 
-        //正确率
-        let correctRate = ((sum1 / sum) * 100).toFixed(0);
+      alert(
+        ` 总分：${sum}分\n 正确个数：${correctNum}个\n 错误个数：${errorNum}个\n 正确率：${correctRate}%`
+      );
 
-        alert(` 总分：${sum}分\n 正确个数：${correctNum}个\n 错误个数：${errorNum}个\n 正确率：${correctRate}%`);
+      // 保存结果
+      let result = {
+        correctNum: correctNum, //正确个数
+        errorNum: errorNum, //错误个数
+        sum1: sum1, //总分
+        correctRate: correctRate, //正确率
+      };
+      localStorage.setItem("result", JSON.stringify(result)); //保存结果转为字符串
+      // 跳转到结果页面
+      // window.location.href = "./result.html";
+    };
 
-        // 保存结果
-        let result = {
-            "correctNum": correctNum, //正确个数
-            "errorNum": errorNum, //错误个数
-            "sum1": sum1, //总分
-            "correctRate": correctRate //正确率
-        };
-        localStorage.setItem("result", JSON.stringify(result)); //保存结果转为字符串
-        // 跳转到结果页面
-        // window.location.href = "./result.html";
+    var UL = document.getElementsByTagName("ul")[0];
+    var str = "";
+    for (let i = 1; i <= proArr.length; i++) {
+      str += `<li>${i}</li>`;
     }
-
-        var UL = document.getElementsByTagName('ul')[0]
-        var str =''
-        for(let i = 1;i <= proArr.length;i++){
-            str +=`<li>${i}</li>`
-            }
-        UL.innerHTML =str //把str放到ul里面
-        //给ul添加点击事件
-        document.getElementsByTagName('ul')[0].onclick = function(e){
-                showProblem(
-                   parseInt  ( e.target.innerHTML-1)
-                )  //调用showProblem函数
-        }
-
-</script>
-
+    UL.innerHTML = str; //把str放到ul里面
+    //给ul添加点击事件
+    document.getElementsByTagName("ul")[0].onclick = function (e) {
+      showProblem(parseInt(e.target.innerHTML - 1)); //调用showProblem函数
+    };
+  </script>
+  <script>
+    // TODO: 增加动画
+  </script>
 </html>
